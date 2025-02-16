@@ -5,7 +5,7 @@ STM32 + W5500 Ethernet + QT를 활용한 채팅방 감시 프로그램
 ## 📌사용기술 및 사용하드웨어
 FreeRTOS
 
-QT+QML
+QT6+QML
 
 STM32F411RE (Nucleo)
 
