@@ -10,6 +10,7 @@ QT6+QML
 STM32 Cube IDE
 
 Ethernet: HAL위주 MCU 프로그래밍
+
 Wifi\: Baremetal MCU 프로그래밍
 
 ## 📌사용하드웨어
