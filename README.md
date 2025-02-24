@@ -13,6 +13,9 @@ Ethernet: HAL위주 MCU 프로그래밍
 
 Wifi\: Baremetal MCU 프로그래밍
 
+Serial Monitoring Program : SerialTools(Mac OS)
+
+
 ## 📌사용하드웨어
 STM32F411RE (Nucleo)
 
