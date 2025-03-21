@@ -12,5 +12,5 @@
 | **클라이언트 UI** | QML 파일 및 동작 | • `Init.qml`: 로그인 입력 창 <br> • `FrontmanWindow.qml`: 대기 및 사용자 현황 표시 <br> • `ChatWindow.qml`: 채팅방 창 <br> • `ResultWindow.qml`: 게임 종료 결과 및 자동 창 닫힘 표시 |
 | **종료 프로세스** | 탈락 처리 및 통신 | • 서버가 패자 판단 후 `[Disconnect]:roomNum` 전송 <br> • STM32 `UARTReceiveTaskFunc()` 에서 수신 및 파싱 <br> • 해당 방 LED OFF, buzzerQueue 에 부저 명령 전달 <br> • PC 측 클라이언트 소켓 3초 후 강제 종료 |
 | **FreeRTOS Task** | 각 태스크 기능 상세 | • **ChatRoomTask**: 버튼 입력 큐 읽기 → LED 상태 변경 및 부저 큐 전송 <br> • **RunQtTask**: start 플래그 세트 시 `RUN_QT` 전송 <br> • **UARTReceiveTask**: Disconnect 수신 시 LED OFF <br> • **BuzzerTask**: 큐 기반으로 특정 채널 부저 울림 |
-| **큐 및 보호 리소스** | 정의 및 사용 위치 | • `uartMutex`: `Safe_UART_Transmit()`에서 사용 <br> • `ChatRoomQueue`: GPIO 버튼 입력 큐 <br> • `UARTReceiveQueue`: 종료 메시지 수신용 큐 <br> • `BuzzerQueue`: 부저 출력 요청 큐 <br> • 각 큐 크기 16개, 데이터형: uint16_t 또는 uint8_t |
+| **큐 및 보호 리소스** | 정의 및 사용 위치 | • `uartMutex`: `Safe_UART_Transmit()`에서 사용, STM32<->QT 양방향 송수신 시 필요했음 <br> • `ChatRoomQueue`: GPIO 버튼 입력 큐 <br> • `UARTReceiveQueue`: 종료 메시지 수신용 큐 <br> • `BuzzerQueue`: 부저 출력 요청 큐 <br> • 각 큐 크기 16개, 데이터형: uint16_t 또는 uint8_t |
 | **예외 및 디버깅 처리** | 구현 방식 | • STM32: `HAL_UART_ErrorCallback()` 호출 시 자동 수신 재시작 <br> • Qt 서버: 잘못된 메시지/네트워크 오류 시 qDebug 로그 <br> • 각 단계에서 Debug_UART_Print() 및 qDebug() 호출 |
