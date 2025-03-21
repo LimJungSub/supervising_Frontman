@@ -14,6 +14,3 @@
 | **큐 및 리소스 관리** | 구성 | • `uartMutex`: 전송 보호 <br> • ChatRoomQueue, BuzzerQueue, UARTReceiveQueue <br> • 데이터형: uint16_t / uint8_t |
 | **에러 처리** | 오류 대응 | • STM32: UART ErrorCallback 자동 복구 <br> • Qt: 잘못된 포맷 & 네트워크 오류 시 qDebug 출력 <br> • 단계별 로그 출력 |
 
----
-
-필요하면 이 표의 스타일을 더 심플/미니멀하게 만들어줄 수도 있음! 원해? 😎
