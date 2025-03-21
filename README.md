@@ -30,7 +30,7 @@ QT 6.4 + QML
 
 | 항목 구분 | 세부 항목 | 내용 및 상세 설명 |
 |---|---|---|
-| **하드웨어 구성** | MCU 및 주변 장치 | • STM32F4 Discovery 보드 <br> • 4개 스위치 (Start, Room1, Room2, Room3) <br> • 상태 LED (Room1 ~ Room3) <br> • PWM 부저 (알림음) <br> • UART 통신용 포트 (USART2) |
+| **하드웨어 구성** | MCU 및 주변 장치 | • 4개 스위치 (Start, Room1, Room2, Room3) <br> • Room1 ~ Room3 상태 LED  <br> • Room1 ~ Room3 상태 Passive Buzzer <br> • UART 통신용 포트 (USART2) |
 | **물리 통신** | 인터페이스 및 설정 | • 양방향 UART (STM32 ↔ PC) <br> • BaudRate: 115200, 8N1 <br> • 수신: 인터럽트 방식 `HAL_UART_Receive_IT()` 사용 <br> • 송신 시 **Safe_UART_Transmit()** 함수를 통해 mutex 보호 (충돌 방지) <br> • mutex 정의: `uartMutexHandle = osMutexNew()` |
 | **전송 보호** | 보호 적용 위치 | • `Safe_UART_Transmit()` 함수 내부 <br>   - `osMutexAcquire(uartMutexHandle, osWaitForever)` 호출 <br>   - HAL_UART_Transmit() 사용 후 `osMutexRelease()` <br> • 이유: FreeRTOS 다중 태스크 환경에서 동시 UART 송신 시 충돌 방지 |
 | **시작 시나리오** | 절차 및 호출 함수 | • Start 버튼 눌림 (GPIO 인터럽트) <br> • `RunQtTask` 실행, `RUN_QT\n` 전송 <br> • PC Qt App의 `SerialHandle::readSerialData_processBuffering()` 함수에서 수신 <br> • QML `FrontmanWindow` 창 생성 트리거 |
