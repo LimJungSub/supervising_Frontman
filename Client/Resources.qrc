@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>WaitingWindow.qml</file>
+        <file>ChatWindow.qml</file>
+        <file>Init.qml</file>
+        <file>Loading_LINEAR_BLUE.gif</file>
+        <file>ResultWindow.qml</file>
+    </qresource>
+</RCC>
