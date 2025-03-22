@@ -18,6 +18,11 @@ FreeRTOS
 
 QT 6.4 + QML
 
+### 개발 환경
+
+macOS 15.3&emsp;&emsp;&emsp;STM32CubeIDE&emsp;&emsp;&emsp;QT Creator
+
+
 ---
 
 
